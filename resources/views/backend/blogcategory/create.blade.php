@@ -25,7 +25,7 @@
                 <h5 class="card-title">Add New Blog</h5>
                 <hr />
 
-                <form id="myForm" method="post" action="{{ route('store.blog') }}">
+                <form id="myForm" method="post" action="{{ route('store.category') }}">
                     @csrf
 
                     <div class="form-body mt-4">

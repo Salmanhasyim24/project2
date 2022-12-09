@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('title')
-    Blog Menu
+    blog Menu
 @endsection
 @section('content')
     <div class="page-content">
@@ -17,7 +17,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('add.category') }}" class="btn btn-primary">Create Blog</a>
+                    <a href="{{ route('add.blog') }}" class="btn btn-primary">Add Blog</a>
                 </div>
             </div>
         </div>
@@ -30,22 +30,33 @@
                         <thead>
                             <tr>
                                 <th>Sl</th>
+                                <th>BlogCategory </th>
+                                <th>Image </th>
                                 <th>Title </th>
-                                <th>action</th>
+                                <th>Tags </th>
+                                <th>Short Description </th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($blogs as $key => $item)
                                 <tr>
                                     <td> {{ $key + 1 }} </td>
-                                    <td>{{ $item->title }}</td>
+                                    <td>{{ $item->category->title }}</td>
                                     <td>
-                                        <a href="{{ route('edit.category', $item->id) }}" class="btn btn-info"
+                                        <img src="{{ asset($item->image) }}" style="width: 70px; height:40px;">
+                                    </td>
+                                    <td>{{ $item->title }}</td>
+                                    <td>{{ $item->tags }}</td>
+                                    <td>{!! Str::limit($item->description, 20) !!}</td>
+                                    <td>
+                                        <a href="{{ route('edit.blog', $item->id) }}" class="btn btn-info"
                                             title="Edit Data">
                                             <i class="fa fa-pencil"></i> </a>
 
-                                        <a href="{{ route('delete.category', $item->id) }}" class="btn btn-danger"
+                                        <a href="{{ route('delete.blog', $item->id) }}" class="btn btn-danger"
                                             id="delete" title="Delete Data"><i class="fa fa-trash"></i></a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -53,7 +64,11 @@
                         <tfoot>
                             <tr>
                                 <th>Sl</th>
+                                <th>BlogCategory </th>
+                                <th>Image </th>
                                 <th>Title </th>
+                                <th>Tags </th>
+                                <th>Short Description </th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

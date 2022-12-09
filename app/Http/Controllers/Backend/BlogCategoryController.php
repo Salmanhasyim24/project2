@@ -49,7 +49,7 @@ class BlogCategoryController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('blog')->with($notification);
+        return redirect()->route('category')->with($notification);
 
 
     } // End Method
@@ -102,7 +102,7 @@ class BlogCategoryController extends Controller
             'alert-type' => 'success'
         );
 
-        return to_route('blog')->with($notification); 
+        return to_route('category')->with($notification); 
 
     }// End Method 
 

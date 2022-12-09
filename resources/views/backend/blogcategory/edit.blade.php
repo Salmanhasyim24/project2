@@ -25,7 +25,7 @@
                 <h5 class="card-title">Add Updated Blog</h5>
                 <hr />
 
-                <form id="myForm" method="post" action="{{ route('update.blog', $blog->id) }}">
+                <form id="myForm" method="post" action="{{ route('update.category', $blog->id) }}">
                     @csrf
 
                     <input type="hidden" name="id" value="{{ $blog->id }}">

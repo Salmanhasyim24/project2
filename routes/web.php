@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\BlogCategoryController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\HomeSlide;
 use App\Http\Controllers\Backend\HomeSlideController;
 use App\Http\Controllers\Backend\PortofolioController;
@@ -58,7 +59,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
        Route::get('/about/multiimg/delete/{id}' , 'MulitImageDelelte')->name('about.multiimg.delete');
        Route::get('/delete/about/{id}' , 'aboutDelete')->name('delete.about'); 
     });
-
+        //Fortofolio All Controller
     Route::controller(PortofolioController::class)->group(function(){
         Route::get('/all/portofolio' , 'index')->name('portofolio');
         Route::get('/create/portofolio' , 'create')->name('add.portofolio');
@@ -68,13 +69,23 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::post('/update/portofolio/thumbnail{id}' , 'UpdatePortofolioThumbnail')->name('update.portofolio.thumbnail');
         Route::get('/delete/portofolio/{id}' , 'destroy')->name('delete.portofolio');
     });
-
+    //BlogCategory All Route
     Route::controller(BlogCategoryController::class)->group(function(){
+        Route::get('/all/category' , 'index')->name('category');
+        Route::get('/create/category' , 'create')->name('add.category');
+        Route::post('/store/category' , 'store')->name('store.category');
+        Route::get('/edit/category/{id}' , 'edit')->name('edit.category');
+        Route::post('/update/category{id}' , 'update')->name('update.category');
+        Route::get('/delete/category/{id}' , 'destroy')->name('delete.category');
+    });
+    //Blog All Route
+    Route::controller(BlogController::class)->group(function(){
         Route::get('/all/blog' , 'index')->name('blog');
         Route::get('/create/blog' , 'create')->name('add.blog');
         Route::post('/store/blog' , 'store')->name('store.blog');
         Route::get('/edit/blog/{id}' , 'edit')->name('edit.blog');
         Route::post('/update/blog{id}' , 'update')->name('update.blog');
+        Route::post('/update/blog/thumbnail{id}' , 'updateimage')->name('update.image');
         Route::get('/delete/blog/{id}' , 'destroy')->name('delete.blog');
     });
 }); //end grup admin middleware 
