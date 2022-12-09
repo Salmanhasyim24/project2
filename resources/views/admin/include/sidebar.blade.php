@@ -26,10 +26,10 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-category'></i>
                 </div>
-                <div class="menu-title">Category Menu</div>
+                <div class="menu-title">About Menu</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Category</a>
+                <li> <a href="{{ route('about') }}"><i class="bx bx-right-arrow-alt"></i>All About</a>
                 </li>
             </ul>
         </li>

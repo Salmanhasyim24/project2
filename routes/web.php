@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\HomeSlide;
 use App\Http\Controllers\Backend\HomeSlideController;
 use App\Http\Controllers\ProfileController;
@@ -42,6 +43,19 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::controller(HomeSlideController::class)->group(function(){
         Route::get('/home/slide', 'HomeSlider')->name('home.slide');
         Route::post('/update/slider', 'UpdateSlider')->name('update.slider');
+    });
+    Route::controller(AboutController::class)->group(function(){
+       Route::get('/all/about' , 'index')->name('about');
+       Route::get('/add/about' , 'create')->name('add.about');
+       Route::post('/store/about' , 'store')->name('store.about');
+       Route::get('/edit/about/{id}' , 'edit')->name('edit.about');
+       Route::post('/update/about' , 'update')->name('update.about');
+       Route::post('/update/about/thumbnail' , 'UpdateaboutThumbnail')->name('update.about.thumbnail');
+       Route::post('/update/about/multiimage' , 'UpdateaboutMultiimage')->name('update.about.multiimage');
+       Route::get('/about/multiimg/delete/{id}' , 'MulitImageDelelte')->name('about.multiimg.delete');
+    //    Route::get('/about/inactive/{id}' , 'aboutInactive')->name('about.inactive');
+    //    Route::get('/about/active/{id}' , 'aboutActive')->name('about.active');
+       Route::get('/delete/about/{id}' , 'aboutDelete')->name('delete.about'); 
     });
 
 }); //end grup admin middleware 
