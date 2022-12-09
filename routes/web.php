@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\HomeSlide;
 use App\Http\Controllers\Backend\HomeSlideController;
 use App\Http\Controllers\Backend\PortofolioController;
 use App\Http\Controllers\ProfileController;
+use App\Models\BlogCategory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,8 +56,6 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
        Route::post('/update/about/thumbnail' , 'UpdateaboutThumbnail')->name('update.about.thumbnail');
        Route::post('/update/about/multiimage' , 'UpdateaboutMultiimage')->name('update.about.multiimage');
        Route::get('/about/multiimg/delete/{id}' , 'MulitImageDelelte')->name('about.multiimg.delete');
-    //    Route::get('/about/inactive/{id}' , 'aboutInactive')->name('about.inactive');
-    //    Route::get('/about/active/{id}' , 'aboutActive')->name('about.active');
        Route::get('/delete/about/{id}' , 'aboutDelete')->name('delete.about'); 
     });
 
@@ -69,6 +69,14 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::get('/delete/portofolio/{id}' , 'destroy')->name('delete.portofolio');
     });
 
+    Route::controller(BlogCategoryController::class)->group(function(){
+        Route::get('/all/blog' , 'index')->name('blog');
+        Route::get('/create/blog' , 'create')->name('add.blog');
+        Route::post('/store/blog' , 'store')->name('store.blog');
+        Route::get('/edit/blog/{id}' , 'edit')->name('edit.blog');
+        Route::post('/update/blog{id}' , 'update')->name('update.blog');
+        Route::get('/delete/blog/{id}' , 'destroy')->name('delete.blog');
+    });
 }); //end grup admin middleware 
 
 require __DIR__.'/auth.php';
