@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\HomeSlide;
 use App\Http\Controllers\Backend\HomeSlideController;
+use App\Http\Controllers\Backend\PortofolioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +57,16 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     //    Route::get('/about/inactive/{id}' , 'aboutInactive')->name('about.inactive');
     //    Route::get('/about/active/{id}' , 'aboutActive')->name('about.active');
        Route::get('/delete/about/{id}' , 'aboutDelete')->name('delete.about'); 
+    });
+
+    Route::controller(PortofolioController::class)->group(function(){
+        Route::get('/all/portofolio' , 'index')->name('portofolio');
+        Route::get('/create/portofolio' , 'create')->name('add.portofolio');
+        Route::post('/store/portofolio' , 'store')->name('store.portofolio');
+        Route::get('/edit/portofolio/{id}' , 'edit')->name('edit.portofolio');
+        Route::post('/update/portofolio{id}' , 'update')->name('update.portofolio');
+        Route::post('/update/portofolio/thumbnail{id}' , 'UpdatePortofolioThumbnail')->name('update.portofolio.thumbnail');
+        Route::get('/delete/portofolio/{id}' , 'destroy')->name('delete.portofolio');
     });
 
 }); //end grup admin middleware 

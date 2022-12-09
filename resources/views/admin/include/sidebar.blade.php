@@ -4,7 +4,7 @@
             <img src="{{ asset('backend/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Eccomerec Sall</h4>
+            <h4 class="logo-text">Portofolio Sall</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
@@ -37,10 +37,10 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-category'></i>
                 </div>
-                <div class="menu-title">SubCategory Menu</div>
+                <div class="menu-title">Portofolio Menu</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Sub Category</a>
+                <li> <a href="{{ route('portofolio') }}"><i class="bx bx-right-arrow-alt"></i>All Portofolio</a>
                 </li>
             </ul>
         </li>

@@ -165,10 +165,10 @@
         $(document).ready(function() {
             $('#myForm').validate({
                 rules: {
-                    name: {
+                    title: {
                         required: true,
                     },
-                    short_description: {
+                    short_title: {
                         required: true,
                     },
                     thumbnail: {
@@ -177,22 +177,10 @@
                     multi_img: {
                         required: true,
                     },
-                    price: {
+                    long_description: {
                         required: true,
                     },
-                    code: {
-                        required: true,
-                    },
-                    qty: {
-                        required: true,
-                    },
-                    brand_id: {
-                        required: true,
-                    },
-                    category_id: {
-                        required: true,
-                    },
-                    subcategory_id: {
+                    short_description: {
                         required: true,
                     },
                 },
@@ -203,16 +191,16 @@
                     short_description: {
                         required: 'Please Enter Short Description',
                     },
-                    thumbnail: {
+                    title: {
                         required: 'Please Select Product Thambnail Image',
                     },
                     multi_img: {
                         required: 'Please Select Product Multi Image',
                     },
-                    price: {
+                    short_title: {
                         required: 'Please Enter Selling Price',
                     },
-                    code: {
+                    long_description: {
                         required: 'Please Enter Product Code',
                     },
                     qty: {
