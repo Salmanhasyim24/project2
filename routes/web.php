@@ -4,12 +4,15 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\FooterController;
 use App\Http\Controllers\Backend\HomeSlide;
 use App\Http\Controllers\Backend\HomeSlideController;
 use App\Http\Controllers\Backend\PortofolioController;
 use App\Http\Controllers\ProfileController;
 use App\Models\BlogCategory;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,13 +39,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('dashboard')->middleware(['auth'])->group(function () {
-    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');   
-    Route::get('/logout', [ AdminController::class, 'adminlogout'])->name('admin.logout');
-    Route::get('/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
-    Route::post('/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
-    Route::get('/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
-    Route::post('/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('update.password');
+    Route::controller(ContactController::class)->group(function(){
+        Route::get('/contact', 'Contact')->name('contact.me');
+        Route::post('/store/message', 'StoreMessage')->name('store.message');
+    });
+
+    Route::prefix('dashboard')->middleware(['auth'])->group(function () {
+        Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');   
+        Route::get('/logout', [ AdminController::class, 'adminlogout'])->name('admin.logout');
+        Route::get('/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
+        Route::post('/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
+        Route::get('/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
+        Route::post('/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('update.password');
 
     Route::controller(HomeSlideController::class)->group(function(){
         Route::get('/home/slide', 'HomeSlider')->name('home.slide');
@@ -87,6 +95,17 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::post('/update/blog{id}' , 'update')->name('update.blog');
         Route::post('/update/blog/thumbnail{id}' , 'updateimage')->name('update.image');
         Route::get('/delete/blog/{id}' , 'destroy')->name('delete.blog');
+    });
+    //Footer All Route
+    Route::controller(FooterController::class)->group(function(){
+        Route::get('/all/footer' , 'index')->name('footer');
+        Route::post('/update/footer{id}' , 'update')->name('update.footer');
+        Route::get('/delete/footer/{id}' , 'destroy')->name('delete.footer');
+    });
+    // Contact All Route
+    Route::controller(ContactController::class)->group(function () {
+        Route::get('/contact/message', 'ContactMessage')->name('contact.message');   
+        Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');     
     });
 }); //end grup admin middleware 
 

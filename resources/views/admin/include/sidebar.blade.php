@@ -48,7 +48,7 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-cart'></i>
                 </div>
-                <div class="menu-title">Category Menu</div>
+                <div class="menu-title"> Blog Category Menu</div>
             </a>
             <ul>
                 <li> <a href="{{ route('category') }}"><i class="bx bx-right-arrow-alt"></i>All Category</a>
@@ -59,23 +59,14 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
+                <div class="parent-icon"><i class='bx bx-support'></i>
                 </div>
-                <div class="menu-title">Slider Menu</div>
+                <div class="menu-title">Settings Menu</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Slider</a>
+                <li> <a href="{{ route('footer') }}"><i class="bx bx-right-arrow-alt"></i>Footer</a>
                 </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
-                </div>
-                <div class="menu-title">Banner Menu</div>
-            </a>
-            <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>All Banner</a>
+                <li> <a href="{{ route('contact.message') }}"><i class="bx bx-right-arrow-alt"></i>Contact</a>
                 </li>
             </ul>
         </li>
