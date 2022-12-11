@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\FooterController;
 use App\Http\Controllers\Backend\HomeSlide;
 use App\Http\Controllers\Backend\HomeSlideController;
 use App\Http\Controllers\Backend\PortofolioController;
+use App\Http\Controllers\Frontend\DetailController;
 use App\Http\Controllers\ProfileController;
 use App\Models\BlogCategory;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +26,10 @@ use PhpParser\Node\Expr\AssignOp\Concat;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -108,5 +110,19 @@ Route::middleware('auth')->group(function () {
         Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');     
     });
 }); //end grup admin middleware 
+
+    Route::controller(DetailController::class)->group(function(){
+
+        Route::get('/', 'Home')->name('home');
+        //portofolio
+        Route::get('/portfolio', 'HomePortfolio')->name('home.portfolio');
+        Route::get('/portfolio/details/{id}', 'PortfolioDetails')->name('portfolio.details');
+        //Blog 
+        Route::get('/blog/details/{id}', 'BlogDetails')->name('blog.details');
+        Route::get('/category/blog/{id}', 'CategoryBlog')->name('category.blog');
+        Route::get('/blog', 'HomeBlog')->name('home.blog');
+        //about
+        Route::get('/about', 'HomeAbout')->name('home.about');
+    });
 
 require __DIR__.'/auth.php';
